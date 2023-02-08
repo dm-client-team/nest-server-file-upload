@@ -29,3 +29,25 @@ export class FileInfo {
     @Column({ type: 'datetime' })
     update_time: Date = new Date()
 }
+
+
+@Entity()
+export class FileUse {
+    @PrimaryColumn({ length: 50 })
+    id: string
+
+    @Column({ length: 50 })
+    file_id: string
+
+    @Column({ length: 50 })
+    business_id: string
+
+    @Column({ length: 50 })
+    business_type: string
+
+    @Column({ type: 'datetime' })
+    create_time: Date = new Date()
+
+    @Column({ type: 'datetime' })
+    update_time: Date = new Date()
+}

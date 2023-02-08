@@ -5,6 +5,7 @@ import { FileInfo } from './entity/FileInfo.entities';
 import * as crypto from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path';
+import { ResData } from './tool/ResData';
 
 export type FileInput = {
   size: number,
@@ -52,7 +53,7 @@ export class AppService {
 
     await this.repositoryFileInfo.insert(info)
 
-    return info
+    return ResData.success(info)
   }
 
   async download(id: string) {
@@ -65,4 +66,8 @@ export class AppService {
 
     return { stream, info }
   }
+
+  async link(fileId:string){}
+
+  async clear(){}
 }
