@@ -4,12 +4,12 @@ import { AppController } from './app.controller';
 import { AppDataSource } from './app.datasource';
 import { AppService } from './app.service';
 import { DataSource } from 'typeorm';
-import { FileInfo } from './entity/FileInfo.entities';
+import { FileBusiness, FileInfo } from './entity/FileInfo.entities';
 
 @Module({
   imports: [
     AppDataSource,
-    TypeOrmModule.forFeature([FileInfo])
+    TypeOrmModule.forFeature([FileInfo,FileBusiness])
   ],
   controllers: [AppController],
   providers: [AppService],

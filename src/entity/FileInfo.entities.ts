@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from "typeorm"
+import { Entity, PrimaryColumn, Column, OneToMany, ManyToOne } from "typeorm"
+import * as crypto from 'crypto'
 
 @Entity()
 export class FileInfo {
@@ -28,19 +29,23 @@ export class FileInfo {
 
     @Column({ type: 'datetime' })
     update_time: Date = new Date()
+
+    @OneToMany(() => FileBusiness, business => business.file_info)
+    businesses: FileBusiness[];
+
 }
 
-
 @Entity()
-export class FileUse {
-    @PrimaryColumn({ length: 50 })
-    id: string
+export class FileBusiness {
 
-    @Column({ length: 50 })
-    file_id: string
+    @PrimaryColumn({ length: 50 })
+    id: string = crypto.randomUUID()
 
     @Column({ length: 50 })
     business_id: string
+
+    @ManyToOne(() => FileInfo, info => info.businesses)
+    file_info: FileInfo
 
     @Column({ length: 50 })
     business_type: string
