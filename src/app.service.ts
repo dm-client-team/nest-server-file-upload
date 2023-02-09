@@ -60,6 +60,11 @@ export class AppService {
     info.encoding = file.encoding
     info.size = file.size
 
+    
+    if (!fs.existsSync(path.resolve(__dirname, `../files`))) {
+      fs.mkdirSync(path.resolve(__dirname, `../files`), { recursive: true })
+    }
+
     fs.writeFileSync(path.resolve(__dirname, `../files/${info.download_id}`), file.buffer)
 
     await this.repositoryFileInfo.insert(info)
