@@ -28,5 +28,5 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.sha }} # 用于标记容器版本号
       run: |
-        docker build -t registry.cn-shanghai.aliyuncs.com/togii/nest-server-user:latest .
-        docker push registry.cn-shanghai.aliyuncs.com/togii/nest-server-user:latest
+        docker build -t registry.cn-shanghai.aliyuncs.com/togii/nest-server-file-upload:latest .
+        docker push registry.cn-shanghai.aliyuncs.com/togii/nest-server-file-upload:latest
