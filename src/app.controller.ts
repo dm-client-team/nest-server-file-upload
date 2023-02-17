@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Res, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Res, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { AppService, FileInput } from './app.service';
 import { Response } from 'express'
@@ -53,7 +53,7 @@ export class AppController {
     stream.pipe(res)
   }
 
-  @Post('/link/:file_id')
+  @Put('/link/:file_id')
   @ApiBody({
     schema: {
       type: 'object',
@@ -74,7 +74,7 @@ export class AppController {
     return ResData.success(await this.appService.link(type_code, file_id, business_id))
   }
 
-  @Post('/unlink/:file_id')
+  @Put('/unlink/:file_id')
   @ApiBody({
     schema: {
       type: 'object',

@@ -94,6 +94,8 @@ export class AppService {
     })
 
     this.repositoryFileBusiness.manager.save(business)
+
+    return file_info
   }
 
   async unlink(fileId: string, businessId: string) {
